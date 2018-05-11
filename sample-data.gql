@@ -1,0 +1,9 @@
+insert
+  $cua has name 'cua' isa compileunit;
+  $cla has name 'cla' isa class;
+  $cub has name 'cub' isa compileunit;
+  $clb has name 'clb' isa class;
+
+  (containing_class:$cua, contained_by_compileunit: $cla) isa contain_class;
+  (containing_class:$cub, contained_by_compileunit: $clb) isa contain_class;
+  (importing_class:$cua, imported_by_compileunit: $clb) isa import_class;

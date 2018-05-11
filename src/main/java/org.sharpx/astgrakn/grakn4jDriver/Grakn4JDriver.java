@@ -83,11 +83,11 @@ public class Grakn4JDriver {
 		}
 
 		try (GraknTx tx = grakn_session.open(GraknTxType.WRITE)) {
-			JavaSchema schema = JavaSchema.setup(tx);
-			Attribute fileName = schema.name.putAttribute(fileNodeAST.getName());
-			Attribute packageName = schema.package_name.putAttribute(fileNodeAST.getPackageName());
+			JavaSchema schema = JavaSchema.load(tx);
 
 			Entity cu = schema.compileunit.addEntity();
+			Attribute fileName = schema.name.putAttribute(fileNodeAST.getName());
+			Attribute packageName = schema.package_name.putAttribute(fileNodeAST.getPackageName());
 			cu.attribute(fileName).attribute(packageName);
 
 			//check if packgee named packagename already exists
