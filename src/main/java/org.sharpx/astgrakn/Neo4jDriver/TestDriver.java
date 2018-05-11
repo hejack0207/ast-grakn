@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator.Neo4jDriver;
+package org.sharpx.astgrakn.Neo4jDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;

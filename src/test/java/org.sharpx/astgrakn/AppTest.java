@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator;
+package org.sharpx.astgrakn;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

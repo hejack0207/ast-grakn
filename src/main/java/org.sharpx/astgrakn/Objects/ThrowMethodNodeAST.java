@@ -1,10 +1,11 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
-public class ClassImplementsNodeAST {
-
+public class ThrowMethodNodeAST {
+	
 	private String name;
-
-	public ClassImplementsNodeAST(String name) {
+	
+	public ThrowMethodNodeAST(String name){
+		
 		this.setName(name);
 	}
 
@@ -18,7 +19,7 @@ public class ClassImplementsNodeAST {
 	
 	@Override
 	public String toString(){
-		String to_string = "[ \' ImplementsNodeAST - Name: " + name
+		String to_string = "[ \'ThrowMethodNodeAST - Name: " + name
 				+ "\']";
 		
 		return to_string;

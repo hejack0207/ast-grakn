@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
 import java.util.ArrayList;
 import java.util.List;

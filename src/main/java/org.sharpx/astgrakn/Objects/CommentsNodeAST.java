@@ -1,10 +1,10 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
-public class AnnotationNodeAST {
+public class CommentsNodeAST {
 
 	private String name;
-	
-	public AnnotationNodeAST(String name){
+
+	public CommentsNodeAST(String name) {
 		this.setName(name);
 	}
 
@@ -15,13 +15,12 @@ public class AnnotationNodeAST {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String toString(){
-		String to_string = "[ \'AnnotationNodeAST - Name: " + name
+		String to_string = "[ \'CommentsNodeAST - Name: " + name
 				+ "\']";
 		
 		return to_string;
 	}
-	
 }

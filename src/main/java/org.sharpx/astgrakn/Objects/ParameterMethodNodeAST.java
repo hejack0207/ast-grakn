@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
 public class ParameterMethodNodeAST {
 

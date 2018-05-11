@@ -1,16 +1,15 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.reflect.Modifier;
 
-public class ClassNodeAST {
-
-	private String repoURL;
+public class ClassHasMethodNodeAST {
+	
+	private String id;
 	private String name;
 	private String packageName;
-	private String extendsClass;
-	private long numberOfMethods;
+	private String returningType;
 	private boolean hasFinalModifier;
 	private boolean hasAbstractModifier;
 	private boolean hasPrivateModifier;
@@ -20,14 +19,15 @@ public class ClassNodeAST {
 	private boolean hasSynchronizeModifier;
 	private List<AnnotationNodeAST> annotatios;
 	private List<CommentsNodeAST> comments;
-	private List<ClassImplementsNodeAST> impl;
-	private List<ClassHasMethodNodeAST> method;
+	private List<ParameterMethodNodeAST> parameters;
+	private List<ThrowMethodNodeAST> throwsMethod;
 
-	public ClassNodeAST(String repoURL, String name, String packageName) {
-		setRepoURL(repoURL);
-		setName(name);
-		setPackageName(packageName);
-		setExtendsClass("None");
+	
+	public ClassHasMethodNodeAST(String name, String packageName) {
+		this.setId(packageName + "-MethodNodeFromClass-" + name);
+		this.name = name;
+		this.packageName = packageName;
+		this.returningType = "";
 		hasFinalModifier = false;
 		hasAbstractModifier = false;
 		hasPrivateModifier = false;
@@ -35,13 +35,36 @@ public class ClassNodeAST {
 		hasProtectedModifier = false;
 		hasStaticModifier = false;
 		hasSynchronizeModifier = false;
-		numberOfMethods = 0;
-		annotatios = new ArrayList<AnnotationNodeAST>();
-		comments = new ArrayList<CommentsNodeAST>();
-		impl = new ArrayList<ClassImplementsNodeAST>();
-		method = new ArrayList<ClassHasMethodNodeAST>();
+		setAnnotatios(new ArrayList<AnnotationNodeAST>());
+		setComments(new ArrayList<CommentsNodeAST>());
+		setParameters(new ArrayList<ParameterMethodNodeAST>());
+		setThrowsMethod(new ArrayList<ThrowMethodNodeAST>());
 	}
 
+	public void setAllModifiers(int mod){
+		if (Modifier.isFinal(mod)) {
+			hasFinalModifier = true;
+		}
+		if (Modifier.isAbstract(mod)){
+			hasAbstractModifier = true;
+		}
+		if (Modifier.isPrivate(mod)){
+			hasPrivateModifier = true;
+		}
+		if (Modifier.isPublic(mod)){
+			hasPublicModifier = true;
+		}
+		if (Modifier.isProtected(mod)){
+			hasProtectedModifier = true;
+		}
+		if (Modifier.isStatic(mod)){
+			hasStaticModifier = true;
+		}
+		if (Modifier.isSynchronized(mod)){
+			hasStaticModifier = true;
+		}
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -56,22 +79,6 @@ public class ClassNodeAST {
 
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
-	}
-
-	public String getExtendsClass() {
-		return extendsClass;
-	}
-
-	public void setExtendsClass(String extendsClass) {
-		this.extendsClass = extendsClass;
-	}
-
-	public long getNumberOfMethods() {
-		return numberOfMethods;
-	}
-
-	public void setNumberOfMethods(long numberOfMethods) {
-		this.numberOfMethods = numberOfMethods;
 	}
 
 	public boolean isHasFinalModifier() {
@@ -130,6 +137,22 @@ public class ClassNodeAST {
 		this.hasSynchronizeModifier = hasSynchronizeModifier;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getReturningType() {
+		return returningType;
+	}
+
+	public void setReturningType(String returningType) {
+		this.returningType = returningType;
+	}
+
 	public List<AnnotationNodeAST> getAnnotatios() {
 		return annotatios;
 	}
@@ -146,53 +169,27 @@ public class ClassNodeAST {
 		this.comments = comments;
 	}
 
-	public List<ClassImplementsNodeAST> getImpl() {
-		return impl;
+	public List<ParameterMethodNodeAST> getParameters() {
+		return parameters;
 	}
 
-	public void setImpl(List<ClassImplementsNodeAST> impl) {
-		this.impl = impl;
+	public void setParameters(List<ParameterMethodNodeAST> parameters) {
+		this.parameters = parameters;
 	}
 
-	public List<ClassHasMethodNodeAST> getMethod() {
-		return method;
+	public List<ThrowMethodNodeAST> getThrowsMethod() {
+		return throwsMethod;
 	}
 
-	public void setMethod(List<ClassHasMethodNodeAST> method) {
-		this.method = method;
+	public void setThrowsMethod(List<ThrowMethodNodeAST> throwsMethod) {
+		this.throwsMethod = throwsMethod;
 	}
-	
-	public void setAllModifiers(int mod){
-		if (Modifier.isFinal(mod)) {
-			hasFinalModifier = true;
-		}
-		if (Modifier.isAbstract(mod)){
-			hasAbstractModifier = true;
-		}
-		if (Modifier.isPrivate(mod)){
-			hasPrivateModifier = true;
-		}
-		if (Modifier.isPublic(mod)){
-			hasPublicModifier = true;
-		}
-		if (Modifier.isProtected(mod)){
-			hasProtectedModifier = true;
-		}
-		if (Modifier.isStatic(mod)){
-			hasStaticModifier = true;
-		}
-		if (Modifier.isSynchronized(mod)){
-			hasStaticModifier = true;
-		}
-	}
-
 	
 	@Override
 	public String toString(){
-		String to_string = "[ \'repoURL: " + repoURL + "\', \'Package : " + packageName + "\', \'Name: " 
-				+ name  
-				+ "\', \'ExtendsClass: " + extendsClass 
-				+ "\', \'NumberOfMethods : " + numberOfMethods
+		String to_string = " METHOD_CLASS -> [ \'ID: " + id + "\', \'Package : " 
+				+ packageName + "\', \'Name: " + name  
+				+ "\', \'ReturningType: " + returningType
 				+ "\', \'HasFinalModifier : " + hasFinalModifier
 				+ "\', \'HasAbstractModifier : " + hasAbstractModifier
 				+ "\', \'HasPrivateModifier : " + hasPrivateModifier
@@ -209,24 +206,15 @@ public class ClassNodeAST {
 			for(int i=0; i<comments.size(); i++)
 				to_string += "\n" + comments.get(i).toString();
 		
-		if (impl.size() != 0 )
-			for(int i=0; i<impl.size(); i++)
-				to_string += "\n" + impl.get(i).toString();
+		if (parameters.size() != 0 )
+			for(int i=0; i<parameters.size(); i++)
+				to_string += "\n" + parameters.get(i).toString();
 		
-		if (method.size() != 0 ){
-			for(int i=0; i<method.size(); i++)
-				to_string += "\n" + method.get(i).toString();
-		}
+		if (throwsMethod.size() != 0 )
+			for(int i=0; i<throwsMethod.size(); i++)
+				to_string += "\n" + throwsMethod.get(i).toString();
 		
 		return to_string;
-	}
-
-	public String getRepoURL() {
-		return repoURL;
-	}
-
-	public void setRepoURL(String repoURL) {
-		this.repoURL = repoURL;
 	}
 
 }

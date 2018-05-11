@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator.Helpers;
+package org.sharpx.astgrakn.Helpers;
 
 public class StaticVariables {
 

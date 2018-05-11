@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator;
+package org.sharpx.astgrakn;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import org.sharpx.ASTCreator.ASTCreator.Helpers.RecursivelyProjectJavaFiles;
-import org.sharpx.ASTCreator.ASTCreator.Neo4jDriver.Neo4JDriver;
-import org.sharpx.ASTCreator.ASTCreator.Objects.FileNodeAST;
+import org.sharpx.astgrakn.Helpers.RecursivelyProjectJavaFiles;
+import org.sharpx.astgrakn.Neo4jDriver.Neo4JDriver;
+import org.sharpx.astgrakn.Objects.FileNodeAST;
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParseException;
 import com.github.javaparser.ast.CompilationUnit;

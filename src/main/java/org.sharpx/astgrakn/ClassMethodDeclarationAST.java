@@ -1,4 +1,4 @@
-package org.sharpx.ASTCreator.ASTCreator;
+package org.sharpx.astgrakn;
 
 import org.apache.log4j.Logger; 
 import com.github.javaparser.ast.CompilationUnit;

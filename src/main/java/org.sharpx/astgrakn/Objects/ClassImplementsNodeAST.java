@@ -1,10 +1,10 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
-public class CommentsNodeAST {
+public class ClassImplementsNodeAST {
 
 	private String name;
 
-	public CommentsNodeAST(String name) {
+	public ClassImplementsNodeAST(String name) {
 		this.setName(name);
 	}
 
@@ -15,10 +15,10 @@ public class CommentsNodeAST {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	@Override
 	public String toString(){
-		String to_string = "[ \'CommentsNodeAST - Name: " + name
+		String to_string = "[ \' ImplementsNodeAST - Name: " + name
 				+ "\']";
 		
 		return to_string;

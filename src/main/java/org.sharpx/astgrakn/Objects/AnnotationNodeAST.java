@@ -1,11 +1,10 @@
-package org.sharpx.ASTCreator.ASTCreator.Objects;
+package org.sharpx.astgrakn.Objects;
 
-public class ThrowMethodNodeAST {
-	
+public class AnnotationNodeAST {
+
 	private String name;
 	
-	public ThrowMethodNodeAST(String name){
-		
+	public AnnotationNodeAST(String name){
 		this.setName(name);
 	}
 
@@ -19,9 +18,10 @@ public class ThrowMethodNodeAST {
 	
 	@Override
 	public String toString(){
-		String to_string = "[ \'ThrowMethodNodeAST - Name: " + name
+		String to_string = "[ \'AnnotationNodeAST - Name: " + name
 				+ "\']";
 		
 		return to_string;
 	}
+	
 }

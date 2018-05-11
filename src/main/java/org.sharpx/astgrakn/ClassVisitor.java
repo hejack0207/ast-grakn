@@ -1,19 +1,19 @@
-package org.sharpx.ASTCreator.ASTCreator;
+package org.sharpx.astgrakn;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import org.sharpx.ASTCreator.ASTCreator.Objects.AnnotationNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.ClassHasMethodNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.ClassImplementsNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.ClassNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.CommentsNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.InterfaceHasMethodNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.InterfaceNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.ParameterMethodNodeAST;
-import org.sharpx.ASTCreator.ASTCreator.Objects.ThrowMethodNodeAST;
+import org.sharpx.astgrakn.Objects.AnnotationNodeAST;
+import org.sharpx.astgrakn.Objects.ClassHasMethodNodeAST;
+import org.sharpx.astgrakn.Objects.ClassImplementsNodeAST;
+import org.sharpx.astgrakn.Objects.ClassNodeAST;
+import org.sharpx.astgrakn.Objects.CommentsNodeAST;
+import org.sharpx.astgrakn.Objects.InterfaceHasMethodNodeAST;
+import org.sharpx.astgrakn.Objects.InterfaceNodeAST;
+import org.sharpx.astgrakn.Objects.ParameterMethodNodeAST;
+import org.sharpx.astgrakn.Objects.ThrowMethodNodeAST;
 import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.MethodDeclaration;
