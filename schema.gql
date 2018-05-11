@@ -1,0 +1,17 @@
+define
+  package sub entity,
+  has name,
+  plays including-class;
+
+  class sub entity,
+  has name,
+  has package-name,
+  plays importing-class,
+  plays imported-by-class,
+  plays included-by-package;
+
+  name sub attribute, datatype string;
+  package-name sub attribute, datatype string;
+
+  import sub relationship, relates importing-class, relates imported-by-class;
+  include sub relationship, relates including-class, relates included-by-package;
