@@ -1,7 +1,7 @@
-package com.elasticthree.ASTCreator.ASTCreator.Neo4jDriver;
+package org.sharpx.ASTCreator.ASTCreator.Neo4jDriver;
 
-import com.elasticthree.ASTCreator.ASTCreator.Helpers.StaticVariables;
-import com.elasticthree.ASTCreator.ASTCreator.Objects.*;
+import org.sharpx.ASTCreator.ASTCreator.Helpers.StaticVariables;
+import org.sharpx.ASTCreator.ASTCreator.Objects.*;
 
 import org.apache.log4j.Logger;
 import org.neo4j.driver.v1.AuthTokens;

@@ -1,10 +1,10 @@
-package com.elasticthree.ASTCreator.ASTCreator.Objects;
+package org.sharpx.ASTCreator.ASTCreator.Objects;
 
-public class ClassImplementsNodeAST {
+public class CommentsNodeAST {
 
 	private String name;
 
-	public ClassImplementsNodeAST(String name) {
+	public CommentsNodeAST(String name) {
 		this.setName(name);
 	}
 
@@ -15,10 +15,10 @@ public class ClassImplementsNodeAST {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String toString(){
-		String to_string = "[ \' ImplementsNodeAST - Name: " + name
+		String to_string = "[ \'CommentsNodeAST - Name: " + name
 				+ "\']";
 		
 		return to_string;

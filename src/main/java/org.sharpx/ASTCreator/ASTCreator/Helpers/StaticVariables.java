@@ -1,4 +1,4 @@
-package com.elasticthree.ASTCreator.ASTCreator.Helpers;
+package org.sharpx.ASTCreator.ASTCreator.Helpers;
 
 public class StaticVariables {
 

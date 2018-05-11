@@ -1,4 +1,4 @@
-package com.elasticthree.ASTCreator.ASTCreator;
+package org.sharpx.ASTCreator.ASTCreator;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package com.elasticthree.ASTCreator.ASTCreator.Helpers;
+package org.sharpx.ASTCreator.ASTCreator.Helpers;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.elasticthree.ASTCreator.ASTCreator.Neo4jDriver.Neo4JDriver;
+import org.sharpx.ASTCreator.ASTCreator.Neo4jDriver.Neo4JDriver;
 
 /**
  * This class parses parsing_info file and inserts 
