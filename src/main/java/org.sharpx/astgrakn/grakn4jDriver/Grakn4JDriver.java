@@ -5,6 +5,8 @@ import ai.grakn.GraknTx;
 import ai.grakn.GraknTxType;
 import ai.grakn.Keyspace;
 import ai.grakn.concept.Attribute;
+import ai.grakn.concept.Entity;
+import ai.grakn.concept.Relationship;
 import ai.grakn.remote.RemoteGrakn;
 import ai.grakn.util.SimpleURI;
 import org.apache.log4j.Logger;
@@ -84,7 +86,23 @@ public class Grakn4JDriver {
 			JavaSchema schema = JavaSchema.setup(tx);
 			Attribute fileName = schema.name.putAttribute(fileNodeAST.getName());
 			Attribute packageName = schema.package_name.putAttribute(fileNodeAST.getPackageName());
-			schema.compileunit.addEntity().attribute(fileName).attribute(packageName);
+
+			Entity cu = schema.compileunit.addEntity();
+			cu.attribute(fileName).attribute(packageName);
+
+			//check if packgee named packagename already exists
+			Entity packagee = schema.packagee.addEntity();
+			packagee.attribute(schema.name.putAttribute(packageName));
+			Relationship include_compileunit = schema.include_compileunit.addRelationship();
+			include_compileunit.addRolePlayer(schema.including_compileunit, packagee).addRolePlayer(schema.included_by_package, cu);
+
+			for (ClassNodeAST classNode : fileNodeAST.getClasses()) {
+				Entity clazz = schema.clazz.addEntity();
+				clazz.attribute(schema.name.putAttribute(classNode.getName()));
+
+				Relationship contain_class = schema.contain_class.addRelationship();
+				contain_class.addRolePlayer(schema.containing_class, cu).addRolePlayer(schema.contained_by_compileunit, clazz);
+			}
 		}
 
 		if (isNeo4jConnectionUp()) {
