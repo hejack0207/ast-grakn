@@ -4,6 +4,7 @@ import ai.grakn.GraknSession;
 import ai.grakn.GraknTx;
 import ai.grakn.GraknTxType;
 import ai.grakn.Keyspace;
+import ai.grakn.concept.Attribute;
 import ai.grakn.remote.RemoteGrakn;
 import ai.grakn.util.SimpleURI;
 import org.apache.log4j.Logger;
@@ -35,7 +36,7 @@ public class Grakn4JDriver {
 		Properties prop = new Properties();
 		InputStream input = null;
 
-		GraknSession grakn_session = RemoteGrakn.session(new SimpleURI(host+":"+port), Keyspace.of(keyspace));
+		grakn_session = RemoteGrakn.session(new SimpleURI(host+":"+port), Keyspace.of(keyspace));
 
 	}
 
@@ -80,7 +81,10 @@ public class Grakn4JDriver {
 		}
 
 		try (GraknTx tx = grakn_session.open(GraknTxType.WRITE)) {
-			
+			JavaSchema schema = JavaSchema.setup(tx);
+			Attribute fileName = schema.name.putAttribute(fileNodeAST.getName());
+			Attribute packageName = schema.package_name.putAttribute(fileNodeAST.getPackageName());
+			schema.compileunit.addEntity().attribute(fileName).attribute(packageName);
 		}
 
 		if (isNeo4jConnectionUp()) {
@@ -877,8 +881,6 @@ public class Grakn4JDriver {
 	public void closeDriverSession() {
 		if (session != null)
 			session.close();
-		if (driver != null)
-			driver.close();
 	}
 
 	public String escapingCharacters(String query) {
