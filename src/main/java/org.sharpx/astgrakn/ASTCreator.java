@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.github.javaparser.ast.ImportDeclaration;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -79,6 +80,9 @@ public class ASTCreator {
 		CompilationUnit cu;
 		cu = getClassCompilationUnit(path_to_class);
 		if (cu != null) {
+			for(ImportDeclaration impd: cu.getImports()){
+				impd.getName();
+			}
 			ClassMethodDeclarationAST ast = new ClassMethodDeclarationAST(cu,
 					getRepoURL(), path_to_class);
 			ast.getTypeDeclarationFile();
