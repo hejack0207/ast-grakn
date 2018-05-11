@@ -1,17 +1,23 @@
 define
   package sub entity,
   has name,
-  plays including-class;
+  plays including_compileunit;
+
+  compileunit sub entity,
+  has name,
+  has package_name,
+  plays importing_class,
+  plays containing_class,
+  plays included_by_package;
 
   class sub entity,
-  has name,
-  has package-name,
-  plays importing-class,
-  plays imported-by-class,
-  plays included-by-package;
+  plays imported_by_compileunit,
+  plays contained_by_compileunit,
+  has name;
 
   name sub attribute, datatype string;
-  package-name sub attribute, datatype string;
+  package_name sub attribute, datatype string;
 
-  import sub relationship, relates importing-class, relates imported-by-class;
-  include sub relationship, relates including-class, relates included-by-package;
+  import_class sub relationship, relates importing_class, relates imported_by_compileunit;
+  include_compileunit sub relationship, relates including_compileunit, relates included_by_package;
+  contain_class sub relationship, relates containing_class, relates contained_by_compileunit;

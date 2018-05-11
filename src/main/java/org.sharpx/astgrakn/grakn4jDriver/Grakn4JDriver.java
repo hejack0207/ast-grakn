@@ -24,9 +24,9 @@ public class Grakn4JDriver {
 	final static Logger logger = Logger.getLogger(Grakn4JDriver.class);
 	final static Logger debugLog = Logger.getLogger("debugLogger");
 	final static Logger resultLog = Logger.getLogger("reportsLogger");
-	
-	private Driver driver;
+
 	private Session session;
+	private GraknSession grakn_session;
 
 	/**
 	 * Neo4JDriver creates and inserts the query to Neo4j instance
@@ -35,9 +35,7 @@ public class Grakn4JDriver {
 		Properties prop = new Properties();
 		InputStream input = null;
 
-		GraknSession session = RemoteGrakn.session(new SimpleURI(host+":"+port), Keyspace.of(keyspace));
-		try (GraknTx tx = session.open(GraknTxType.WRITE)) {
-		}
+		GraknSession grakn_session = RemoteGrakn.session(new SimpleURI(host+":"+port), Keyspace.of(keyspace));
 
 	}
 
@@ -79,6 +77,10 @@ public class Grakn4JDriver {
 			logger.debug("AST File Object is null (Probably had parsing error)");
 			debugLog.debug("AST File Object is null (Probably had parsing error)");
 			return;
+		}
+
+		try (GraknTx tx = grakn_session.open(GraknTxType.WRITE)) {
+			
 		}
 
 		if (isNeo4jConnectionUp()) {
