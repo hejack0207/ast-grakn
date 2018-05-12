@@ -9,7 +9,8 @@ define
   plays importing_class,
   plays containing_class,
   plays included_by_package,
-  plays compile_unit;
+  plays cu_source,
+  plays cu_dependency;
 
   class sub entity,
   plays imported_by_compileunit,
@@ -22,14 +23,14 @@ define
   import_class sub relationship, relates importing_class, relates imported_by_compileunit;
   include_compileunit sub relationship, relates including_compileunit, relates included_by_package;
   contain_class sub relationship, relates containing_class, relates contained_by_compileunit;
-  depend_compileunit sub relationship, relates compile_unit, relates compile_unit;
+  depend_compileunit sub relationship, relates cu_source, relates cu_dependency;
 
   compileunit_depend
     when {
-      ($cu1,$cl1) isa import_class;
-      ($cu2,$cl1) isa contain_class;
+      (importing_class:$cu1,imported_by_compileunit:$cl1) isa import_class;
+      (containing_class:$cu2,contained_by_compileunit:$cl1) isa contain_class;
     }
     then {
-      ($cu1,$cu2) isa depend_compileunit;
+      (cu_source:$cu1, cu_dependency:$cu2) isa depend_compileunit;
     };
 
