@@ -10,3 +10,7 @@ query:
 
 clean-grakn:
 	graql console -k ast_grakn -e 'clean'
+
+run:
+	mvn clean install
+	mvn -Dexec.args="./ http://org.sharpx"  -Dexec.mainClass="org.sharpx.astgrakn.ASTCreator" exec:java
