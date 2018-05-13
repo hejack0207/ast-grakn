@@ -1,7 +1,7 @@
 digraph {
 { node[style="invis"]; edge[style=invis]; l1; l2; l3; l1 -> l2 -> l3 }
-{ rank=min;l1;a [label="XX系统",shape=box]; }
-{ rank=same; node[shape=point];l2; b1; c1; d1;}
+{ rank=min;l1;a[label="XX系统",shape=box]; }
+{ rank=same;l2;node[shape=point];l2; b1; c1; d1;}
 { rank=max; l3; node[shape=box];b[label="模\n块\n1"];c[label="模\n块\n2"];d[label="模\n块\n3"] }
 edge[weight=10]
 a -> c1;
