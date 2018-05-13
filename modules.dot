@@ -1,0 +1,14 @@
+digraph {
+{ node[style="invis"]; edge[style=invis]; l1 -> l2 -> l3 }
+{ rank=min;l1;node[shape=box];h[style=invis];a[label="XX系统"]; }
+{ rank=same;l2;node[shape=point]; b1; c1; d1;}
+{ rank=max; l3; node[shape=box];b[label="模\n块\n1"];c[label="模\n块\n2"];d[label="模\n块\n3"] }
+edge[weight=10]
+a -> c1[arrowhead=none];
+c1 -> c;
+edge[weight=5]
+b1 -> b;
+d1 -> d;
+b1 -> c1[dir=back weight=3 arrowtail=none];
+c1 -> d1[weight=3 arrowhead=none];
+}

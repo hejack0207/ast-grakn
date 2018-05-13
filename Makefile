@@ -14,3 +14,6 @@ clean-grakn:
 neo4j-gendata:
 	mvn clean install
 	mvn -Dexec.args="./ http://org.sharpx"  -Dexec.mainClass="org.sharpx.astgrakn.ASTCreator" exec:java
+
+view-graph:
+	rm /tmp/x.png; cat modules.dot | dot -Tpng >/tmp/x.png; mimeopen /tmp/x.png
