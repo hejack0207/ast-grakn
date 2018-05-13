@@ -4,7 +4,7 @@ digraph {
 { rank=same; l2; b1[group="x"]; c1[group="x"]; d1;}
 { rank=max; l3; b [label="模\n块\n1",shape=box];c[label="模\n块\n2",shape=box];d[label="模\n块\n3",shape=box] }
 a -> c1;
-c1 -> b1;
+c1 -> b1[weight=10];
 c1 -> d1;
 b1 -> b;
 c1 -> c;
