@@ -1,0 +1,12 @@
+digraph {
+{ l1[style="invis"]; l2[style="invis"]; l3[style="invis"]; l1 -> l2[style="invis"] ; l2 -> l3[style="invis"] }
+{ rank=min;l1;a [label="XX系统",shape=box]; }
+{ rank=same; l2; b1[group="x"]; c1[group="x"]; d1;}
+{ rank=max; l3; b [label="模\n块\n1",shape=box];c[label="模\n块\n2",shape=box];d[label="模\n块\n3",shape=box] }
+a -> c1;
+c1 -> b1[weight=10];
+c1 -> d1[weight=1];
+b1 -> b;
+c1 -> c;
+d1 -> d;
+}
